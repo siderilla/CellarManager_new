@@ -11,7 +11,7 @@ namespace CellarManager
     {
         public List<Beverage> LoadAllBeverages()
         {
-            throw new NotImplementedException();
+            return new List<Beverage>();
         }
 
         public void SaveAllBeverages(List<Beverage> beverages)
