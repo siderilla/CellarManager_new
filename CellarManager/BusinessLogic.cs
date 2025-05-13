@@ -59,5 +59,27 @@ namespace CellarManager
         {
             return Beverages;
         }
+
+        public void DeleteBeverage(int index)
+        {
+            if (index >= 0 && index < Beverages.Count)
+            {
+                Beverages.RemoveAt(index);
+                _storage.SaveAllBeverages(Beverages);
+            }
+            else
+            {
+                Console.WriteLine("Invalid index. No beverage deleted.");
+            }
+        }
+
+        public List<Beverage> SearchBeverages(string keyword)
+        {
+            return Beverages
+                .Where(b => b.Name.Contains(keyword, StringComparison.OrdinalIgnoreCase)
+                         || b.Country.Contains(keyword, StringComparison.OrdinalIgnoreCase))
+                .ToList();
+        }
+
     }
 }

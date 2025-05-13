@@ -1,54 +1,4 @@
-ESEMPI:
-
-funzione
-inserisci vino
-inserisci birra
-lista di quello che hai in cantina
-
-cosa mettiamo in beverage?
-	- nome
-	- grado alcolico
-	- colore
-	- annata
-	- tipologia
-e poi
-	- vino
-	- birra
-	e poi
-costruttore:
-	- nome
-	- grado alcolico
-	- colore
-	- annata
-	- tipologia
-
-
-model -> 
-3 classi
-.bevarage (contiene i dati comuni a tutte le bevande - grado alcolico, etc..)
-.vino (estende bevarage)
-.birra (estende bevarage)
-
-- implemento il model:
-	nome, grado alcolico, colore, annata, tipologia
-- tostring con schedina del model su console
-- implemento il controller:
-	- inserimento vino
-	- inserimento birra
-	- lista di quello che hai in cantina
-	- ricerca per nome
-	- ricerca per tipologia
-	- ricerca per colore
-	- ricerca per annata
-	- ricerca per grado alcolico
-	- ricerca per tipologia e colore
-	- ricerca per tipologia e annata
-	- ricerca per tipologia e grado alcolico
-	- ricerca per colore e annata
-	- ricerca per colore e grado alcolico
-	- ricerca per annata e grado alcolico
-
-==============================================================================================
+﻿==============================================================================================
 
 il program lancia uno start che crea tutto querllo che serve alla tui per partire
 tui chiede: quale opzione?
@@ -72,7 +22,7 @@ se inserisci vino:
 se lista di quello che hai in cantina:
  	- chiedi tipologia
 
-tui non sa nulla del model, sa solo che c'� qualcuno che gestisce i dati (businesslogic)
+tui non sa nulla del model, sa solo che c'è qualcuno che gestisce i dati (businesslogic)
 - tui chiama il controller
 - controller chiama il model
 - model fa quello che deve fare
@@ -108,3 +58,12 @@ creare una classe JsonStorage
 
 ==============================================================================================
 ==============================================================================================
+
+
+🧠 QUANDO USARE INTERFACCIA vs EREDITARIETÀ
+Caratteristica			Ereditarietà (classi)				Interfacce
+Tipo di relazione		"è un" (is-a)						"sa fare" (can do)
+Codice riusabile		Sì (condividi metodi/proprietà)		No (solo definizione)
+Polimorfismo			Sì									Sì
+Multieredità?			❌ Solo una classe madre			✅ Più interfacce
+Focus su...				Dati + comportamento				Solo comportamento

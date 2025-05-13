@@ -9,10 +9,16 @@ namespace CellarManager
 {
     internal class CsvStorage : IStorage
     {
+        private List<Beverage> beverages = new List<Beverage>(); // Field to store beverages
+
         public List<Beverage> LoadAllBeverages()
         {
+            if (!File.Exists("beverages.csv"))
+            {
+                return new List<Beverage>();
+            }
             string[] lines = File.ReadAllLines("beverages.csv");
-            List<Beverage> beverages = new List<Beverage>();
+            beverages = new List<Beverage>(); // Initialize the beverages list
             for (int i = 1; i < lines.Length; i++)
             {
                 string[] parts = lines[i].Split(',');
@@ -55,6 +61,19 @@ namespace CellarManager
                 builder.AppendLine(bev.CsvFormat());
             }
             File.WriteAllText("beverages.csv", builder.ToString());
+        }
+
+        public void DeleteBeverage(int index)
+        {
+            if (index >= 0 && index < beverages.Count)
+            {
+                beverages.RemoveAt(index); // Use the beverages field directly
+                SaveAllBeverages(beverages); // Call SaveAllBeverages with the beverages field
+            }
+            else
+            {
+                Console.WriteLine("Invalid index. No beverage deleted.");
+            }
         }
     }
 }

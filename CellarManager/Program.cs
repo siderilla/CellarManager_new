@@ -4,10 +4,10 @@
     {
         static void Main(string[] args)
         {
-            var storage = new CsvStorage();
-            var logic = new BusinessLogic(storage);
+            IStorage storage = new JsonStorage(); // o CsvStorage
+            ILogic logic = new BusinessLogic(storage);
             var ui = new Tui(logic);
-            ui.Start();
+            ui.Start(); // Avvia la tua interfaccia da console
         }
     }
 }

@@ -36,7 +36,9 @@ namespace CellarManager
                 Console.WriteLine("1. Add Beer");
                 Console.WriteLine("2. Add Wine");
                 Console.WriteLine("3. List Beverages");
-                Console.WriteLine("4. Exit");
+                Console.WriteLine("4. Delete Beverage");
+                Console.WriteLine("5. Search Beverage");
+                Console.WriteLine("6. Exit");
                 Console.Write("Please select an option: ");
                 string? input = Console.ReadLine();
                 switch (input)
@@ -51,6 +53,12 @@ namespace CellarManager
                         ListBeverages();
                         break;
                     case "4":
+                        DeleteBeverage();
+                        break;
+                    case "5":
+                        SearchBeverage();
+                        break;
+                    case "6":
                         return;
                     default:
                         Console.WriteLine("Invalid option, please try again.");
@@ -58,6 +66,7 @@ namespace CellarManager
                 }
             }
         }
+
 
         private void AddBeer()
         {
@@ -146,6 +155,42 @@ namespace CellarManager
             }
 
         }
+
+        private void DeleteBeverage()
+        {
+            ListBeverages();
+            Console.Write("Enter the number of the beverage to delete: ");
+            if (int.TryParse(Console.ReadLine(), out int index))
+            {
+                _logic.DeleteBeverage(index - 1); // -1 perché visualizziamo da 1
+            }
+            else
+            {
+                Console.WriteLine("Invalid input.");
+            }
+        }
+
+        private void SearchBeverage()
+        {
+            Console.Write("Enter keyword to search: ");
+            string? keyword = Console.ReadLine();
+            var results = _logic.SearchBeverages(keyword ?? "");
+
+            if (results.Count == 0)
+            {
+                Console.WriteLine("No beverages found matching the keyword.");
+            }
+            else
+            {
+                Console.WriteLine("Search results:");
+                foreach (var bev in results)
+                {
+                    Console.WriteLine(bev.ToString());
+                }
+            }
+        }
+
+
     }
 
     //class Animal
