@@ -33,6 +33,7 @@ namespace CellarManager
                 beer.Year = year.Value;
             }
             Beverages.Add(beer);
+            _storage.SaveAllBeverages(Beverages);
         }
 
         public void AddWine(string name, double alcohol, WineType type, string? country, int? year, string? grape)
@@ -51,6 +52,7 @@ namespace CellarManager
                 wine.Year = year.Value;
             }
             Beverages.Add(wine);
+            _storage.SaveAllBeverages(Beverages);
         }
 
         public List<Beverage> GetBeverages()

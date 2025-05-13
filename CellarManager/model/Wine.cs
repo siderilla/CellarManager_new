@@ -14,6 +14,11 @@ namespace CellarManager.model
         {
             return $"{base.ToString()} - {Type} - Grape: {Grape}";
         }
+
+        public override string CsvFormat()
+        {
+            return $"Wine,{base.CsvFormat()},{Type},,{Grape}";
+        }
     }
 
     public enum WineType

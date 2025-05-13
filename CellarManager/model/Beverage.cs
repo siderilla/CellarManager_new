@@ -35,5 +35,10 @@ namespace CellarManager.model
         {
             return $"{Name} ({Alcohol}%) - {Country}, {Year}";
         }
+
+        public virtual string CsvFormat()
+        {
+            return $"{Name},{Alcohol},{Country},{Year}";
+        }
     }
 }
