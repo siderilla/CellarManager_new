@@ -6,7 +6,29 @@ using System.Threading.Tasks;
 
 namespace CellarManager.model
 {
-    internal class Beer
+    internal class Beer: Beverage
     {
+        public required BeerType Type { get; set; }
+        public int IBU { get; set; }
+
+        public override string ToString()
+        {
+            return $"{base.ToString()} - {Type} - IBU: {IBU}";
+        }
     }
+
+    public enum BeerType
+    {
+        Lager,
+        Ale,
+        Stout,
+        Porter,
+        IPA,
+        Wheat,
+        Pilsner,
+        Sour,
+        BrownAle,
+        AmberAle
+    }
+
 }
